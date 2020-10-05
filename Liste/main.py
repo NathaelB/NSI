@@ -31,26 +31,18 @@ class Liste:
 
    def add_queue(self,val):
        """ajoute une <valeur> en fin de liste"""
-       queue = self.queue
-       tete = self.tete
+       if self.tete is None: #Si tete = none alors on lui ajoute la valeur de tete = val
+           self.tete = val
+       elif self.queue is None: #Si tete = val et que queue = none alors self.queue = Liste(Val)
+           self.queue = Liste(val)
+       else:
+           queue = self.queue
+           while type(queue) is Liste:
+               if queue.queue is None:
+                   queue.queue = Liste(val) #On ajoute ici la valeur Liste(val) dans la queue de queue
+                   break
+               queue = queue.queue
 
-       while type(queue) is Liste: #3ème cas
-           tete = queue.tete
-           queue = queue.queue
-       if tete is None: #Si tete = None
-           tete = val
-       else: #Si tete = val et que queue = none
-           queue = Liste(val)
-           queue = queue.queue
-
-       # if tete is None:
-       #     tete = val
-       # if queue is None:
-       #     tete.queue = Liste(val)
-       #     queue = queue.queue
-       # else:
-       #     queue = Liste(val)
-       #     queue = queue.queue
 
 
 
